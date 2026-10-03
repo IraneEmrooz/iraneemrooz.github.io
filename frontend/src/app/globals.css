@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { -webkit-text-size-adjust: 100%; }
+  body { @apply bg-stone-50 text-body text-stone-900 antialiased; }
+  :focus-visible { outline: 3px solid #0f766e; outline-offset: 2px; border-radius: 4px; }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+  }
+}
+
+/* Brand wordmark: slowly drifting Iranian-turquoise (فیروزه‌ای) gradient + a soft floating glow behind it.
+   All stops keep >= 3:1 contrast on white (large text). Motion is removed by the reduced-motion rule above. */
+@layer components {
+  .brand-wrap { position: relative; isolation: isolate; }
+  .brand-wrap::before {
+    content: ''; position: absolute; inset: 2px -12px; z-index: -1; border-radius: 9999px;
+    background: radial-gradient(closest-side, rgba(45, 212, 191, 0.38), rgba(45, 212, 191, 0));
+    filter: blur(10px); animation: brand-drift 7s ease-in-out infinite;
+  }
+  .brand-glow {
+    background-image: linear-gradient(100deg, #0f766e 0%, #0d9488 30%, #12a091 50%, #0d9488 70%, #0f766e 100%);
+    background-size: 250% 100%;
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent; color: transparent;
+    animation: brand-float 6s ease-in-out infinite;
+  }
+  @keyframes brand-float { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+  @keyframes brand-drift { 0%, 100% { transform: translateX(-8px) scale(0.96); opacity: 0.7; } 50% { transform: translateX(8px) scale(1.05); opacity: 1; } }
+  @media (forced-colors: active) {
+    .brand-wrap::before { display: none; }
+    .brand-glow { background: none; -webkit-text-fill-color: currentColor; color: LinkText; }
+  }
+}
+
+@layer components {
+  .result-axis-percent { font-variant-numeric: tabular-nums; }
+}

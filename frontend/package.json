@@ -1,0 +1,39 @@
+{
+  "name": "iran-political-values-frontend",
+  "version": "1.0.0",
+  "private": true,
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build && node scripts/inject-csp.mjs",
+    "build:plain": "next build",
+    "preview": "node scripts/preview.mjs",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "test": "tsx --tsconfig tsconfig.test.json --test \"src/**/*.test.ts\" \"src/**/*.test.tsx\""
+  },
+  "dependencies": {
+    "next": "^15.5.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.3.0",
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.0",
+    "autoprefixer": "^10.4.20",
+    "eslint": "^9.20.0",
+    "eslint-config-next": "^15.5.0",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.17",
+    "tsx": "^4.19.0",
+    "typescript": "^5.6.0"
+  },
+  "allowScripts": {
+    "esbuild@0.28.2": true,
+    "unrs-resolver@1.12.2": true
+  }
+}
