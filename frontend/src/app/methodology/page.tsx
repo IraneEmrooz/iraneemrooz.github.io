@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
 import { InfoPage, InfoSection } from '@/components/InfoPage';
+import { pageMeta } from '@/lib/site';
 
-export const metadata: Metadata = { title: 'روش‌شناسی' };
+export const metadata: Metadata = pageMeta({ title: 'روش‌شناسی', description: 'روش محاسبهٔ نتیجهٔ آزمون: مقیاس پنج‌گزینه‌ای، محورهای دوقطبی، موارد مستقل، بخش آیندهٔ حکومت و محدودیت‌ها. محاسبه کاملاً در مرورگر شما انجام می‌شود.', path: '/methodology/' });
 
 // Derived from docs/handoff/TEST_SPEC.md. Deliberately no internal weights, no per-question mapping, no new scoring rules.
 export default function Page() {

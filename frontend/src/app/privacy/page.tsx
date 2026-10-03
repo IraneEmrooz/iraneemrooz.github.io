@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
 import { InfoPage, InfoSection } from '@/components/InfoPage';
+import { pageMeta } from '@/lib/site';
 
-export const metadata: Metadata = { title: 'حریم خصوصی' };
+export const metadata: Metadata = pageMeta({ title: 'حریم خصوصی', description: 'حساب کاربری و سروری برای ذخیرهٔ پاسخ‌ها وجود ندارد. این صفحه توضیح می‌دهد چه چیزی در مرورگر شما می‌ماند، نشانی نتیجه چه اطلاعاتی دارد و چرا سایت بدون ردیاب و آنالیتیکس کار می‌کند.', path: '/privacy/' });
 
 // This site is fully static: there is no server-side application, no database and no API. Everything below describes what
 // the browser does. Keep it in sync with src/lib/storage.ts and src/lib/result/codec.ts.

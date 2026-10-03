@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import type { ReactNode } from 'react';
 import localFont from 'next/font/local';
 import { SiteChrome } from '@/components/SiteChrome';
+import { SITE_ORIGIN, SITE_TITLE } from '@/lib/site';
 import './globals.css';
 
 // Vazir, self-hosted (no external request). Weights: Light 300 · Regular 400 · Medium 500 · Bold 700.
@@ -26,8 +27,9 @@ const yekanBoom = localFont({
 });
 
 export const metadata: Metadata = {
-  title: { default: 'ارزش‌ها و دیدگاه‌های سیاسی ایران امروز', template: '%s | ارزش‌ها و دیدگاه‌های سیاسی ایران امروز' },
-  description: 'آزمون ناشناس و توصیفی؛ بدون امتیاز یا برچسب سیاسی کلی.',
+  metadataBase: new URL(SITE_ORIGIN),
+  title: { default: SITE_TITLE, template: `%s | ${SITE_TITLE}` },
+  description: 'آزمون ناشناس و توصیفی؛ بدون امتیاز یا برچسب سیاسی کلی.',   // pages override this with their own (see lib/site.ts)
   referrer: 'no-referrer',
 };
 export const viewport: Viewport = { width: 'device-width', initialScale: 1 };
