@@ -15,7 +15,7 @@ describe('SEO guards', () => {
   it('pageMeta builds an absolute canonical + Open Graph image', () => {
     const m = pageMeta({ title: 'حریم خصوصی', description: 'x', path: '/privacy/' });
     assert.equal(m.alternates?.canonical, `${SITE_URL}/privacy/`);
-    assert.match(JSON.stringify(m.openGraph), /og-image\.png/);
+    assert.match(JSON.stringify(m.openGraph), /og-image-v2\.png/);
     assert.match(String(m.description), /x/);
   });
   it('/test and /result stay noindex and out of the sitemap', () => {

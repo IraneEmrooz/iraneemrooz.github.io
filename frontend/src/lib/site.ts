@@ -8,7 +8,7 @@ export const SITE_ORIGIN = (process.env.NEXT_PUBLIC_SITE_URL ?? 'https://iraneem
 export const SITE_URL = `${SITE_ORIGIN}${BASE}`;
 export const SITE_NAME = 'ایران امروز';
 export const SITE_TITLE = 'ارزش‌ها و دیدگاه‌های سیاسی ایران امروز';
-export const OG_IMAGE = { url: `${SITE_URL}/og-image.png`, width: 1200, height: 630, alt: 'آزمون چندبعدی ارزش‌ها و دیدگاه‌های سیاسی ایران امروز' };
+export const OG_IMAGE = { url: `${SITE_URL}/og-image-v2.png`, width: 1200, height: 630, alt: 'آزمون چندبعدی ارزش‌ها و دیدگاه‌های سیاسی ایران امروز' };
 
 /** Title / description / canonical / Open Graph / Twitter. `path` starts and ends with "/". Pass `canonical: false` for noindex pages
  *  that only need a link preview (e.g. /result, which people share). */
