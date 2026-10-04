@@ -1,10 +1,8 @@
 import type { Metadata } from 'next';
 import { HomeClient } from '@/components/HomeClient';
-import { PUBLIC_TEST } from '@/lib/definition/public-test';
 import { SITE_NAME, SITE_TITLE, SITE_URL, pageMeta } from '@/lib/site';
 
-const count = new Intl.NumberFormat('fa-IR').format(PUBLIC_TEST.totalQuestions);
-const DESCRIPTION = `آزمون ناشناس با ${count} گزاره در ده بخش برای دیدن موقعیت دیدگاه‌هایتان روی چند محور سیاسی و اجتماعی. پاسخ‌ها فقط در مرورگر شما می‌ماند و برچسب سیاسی کلی داده نمی‌شود.`;
+const DESCRIPTION = 'آزمون ناشناس در ده بخش برای دیدن موقعیت دیدگاه‌هایتان روی چند محور سیاسی و اجتماعی. پاسخ‌ها فقط در مرورگر شما می‌ماند و برچسب سیاسی کلی داده نمی‌شود.';
 
 export const metadata: Metadata = pageMeta({ description: DESCRIPTION, path: '/' });
 
