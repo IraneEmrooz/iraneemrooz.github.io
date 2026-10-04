@@ -15,7 +15,7 @@ export const AXIS_LABELS: Readonly<Record<string, AxisLabel>> = {
   assimilation_vs_pluralism: { poleA: 'یکسان‌سازی', poleB: 'تکثر قومی و زبانی' },
   decentralization: { poleA: 'تمرکز قدرت در مرکز', poleB: 'اختیار بیشتر مدیریت محلی' },
   immigration: { poleA: 'کنترل مهاجرت', poleB: 'گشودگی مهاجرت' },
-  west_engagement: { poleA: 'فاصله راهبردی از غرب', poleB: 'تعامل با غرب' },
+  west_engagement: { poleA: 'فاصله از غرب', poleB: 'تعامل با غرب' },
   regional_role: { poleA: 'نقش منطقه‌ای محدود', poleB: 'نقش منطقه‌ای فعال' },
   foreign_intervention: { poleA: 'کاهش مداخله خارجی', poleB: 'مداخله / حمایت خارجی' },
   defense_capability: { poleA: 'توان دفاعی محدود', poleB: 'توان دفاعی و بازدارندگی' },
