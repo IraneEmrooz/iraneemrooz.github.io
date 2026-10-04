@@ -382,10 +382,23 @@ export function drawResultImage(canvas: HTMLCanvasElement, input: ResultImageInp
   text(ctx, 'iraneemrooz.github.io', M, fy + 24, { size: 19, weight: 700, color: C.teal, align: 'left', family });
 }
 
+/** PNG data URL → Blob (fallback for browsers whose canvas.toBlob returns null). */
+function dataUrlToBlob(dataUrl: string): Blob {
+  const bin = atob(dataUrl.slice(dataUrl.indexOf(',') + 1));
+  const bytes = new Uint8Array(bin.length);
+  for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+  return new Blob([bytes], { type: 'image/png' });
+}
+
 export async function renderResultImage(input: ResultImageInput): Promise<Blob> {
   const family = getComputedStyle(document.documentElement).getPropertyValue('--font-vazir').trim() || 'Tahoma, sans-serif';
-  await Promise.all([400, 500, 700].map((w) => document.fonts.load(`${w} 24px ${family}`)));
+  // Make sure the fonts are ready, but never let a font problem (slow network, old browser without document.fonts)
+  // stop the download: the canvas then simply uses the fallback font.
+  try { await Promise.all([400, 500, 700].map((w) => document.fonts.load(`${w} 24px ${family}`))); } catch { /* fallback font */ }
   const canvas = document.createElement('canvas');
   drawResultImage(canvas, input, family);
-  return new Promise((resolve, reject) => canvas.toBlob((b) => (b ? resolve(b) : reject(new Error('toBlob_failed'))), 'image/png'));
+  return new Promise((resolve, reject) => canvas.toBlob((b) => {
+    if (b) return resolve(b);
+    try { resolve(dataUrlToBlob(canvas.toDataURL('image/png'))); } catch { reject(new Error('toBlob_failed')); }
+  }, 'image/png'));
 }
